@@ -108,7 +108,7 @@ Every skill run returns these sections, in order:
 
 1. **Video Type** — product demo, teaching short, social short, explainer, pitch, historical, or visual concept.
 2. **Target Model** — `hiapi-seedance-2-0-video` or `hiapi-happyhorse-1-0-video`, with one reason.
-3. **Duration And Aspect** — picked from the chosen target's allowed list. Seedance: any integer from `4` to `15` seconds + `--ratio` ∈ `16:9|9:16|1:1|4:3|3:4|21:9`. HappyHorse: `3|5|8|10|15` s + `--size` ∈ `16:9|9:16|1:1|4:3|3:4`. The output names the right flag.
+3. **Duration And Aspect** — picked from the chosen target's allowed list. Seedance: any integer from `4` to `15` seconds + `--ratio` ∈ `16:9|9:16|1:1|4:3|3:4|21:9|adaptive`. HappyHorse: any integer from `3` to `15` s + `--size` ∈ `16:9|9:16|1:1|4:3|3:4`. The output names the right flag.
 4. **Core Objective** — single sentence the viewer should remember.
 5. **Source Extraction Summary** — 5–10 bullets. Real facts are tagged `[source]`; only staging choices (camera, layout, lighting, transition copy) may be tagged `[creative assumption]`. Guesses are never tagged as sources.
 6. **Narrative Through-Line** — one-sentence arc.
@@ -128,13 +128,13 @@ See [`SKILL.md`](SKILL.md) for the full agent contract and [`references/`](refer
 
 - **Duration**: defaults to `5` seconds. This skill never produces a `30`-second plan, because HiAPI's video models do not run that length.
 - **Aspect**: `16:9` for demos and explainers, `9:16` for social shorts.
-- **Image-to-video**: only on Seedance 2.0. The starting image is passed as `--input-reference`. HappyHorse 1.0 is text-to-video only.
+- **Image-to-video**: only on Seedance 2.0. The starting image is passed as `--first-frame-url`. HappyHorse 1.0 is text-to-video only.
 - **Model-specific parameters** — this skill constrains the handoff to the chosen target's actual API:
 
 | Model | Durations (`--seconds`) | Resolutions | Aspect flag |
 | --- | --- | --- | --- |
-| Seedance 2.0 | any integer from `4` to `15` | `480p`, `720p` | `--ratio` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9` |
-| HappyHorse 1.0 | `3`, `5`, `8`, `10`, `15` | `720p`, `1080p` | `--size` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4` |
+| Seedance 2.0 | any integer from `4` to `15` | `480p`, `720p`, `1080p` | `--ratio` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9`, `adaptive` |
+| HappyHorse 1.0 | any integer from `3` to `15` | `720p`, `1080p` | `--size` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4` |
 
 If the user asks for an unsupported duration or ratio, this skill offers the closest supported value and notes the change in the output.
 
