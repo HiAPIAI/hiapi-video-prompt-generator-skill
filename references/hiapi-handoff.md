@@ -7,7 +7,7 @@ This skill hands the final prompt to one of two HiAPI skills. This reference def
 | Use Seedance 2.0 when | Use HappyHorse 1.0 when |
 | --- | --- |
 | The video is image-to-video | The video is text-to-video and the user wants a fast draft |
-| Duration is `4` seconds, or `8`/`10` cinematic | Duration is `3`, `5`, or `15` (a HappyHorse-only value) |
+| Duration is `4` seconds, image-to-video, or cinematic motion control | Duration is `3`, `5`, or `15` and text-to-video draft speed matters |
 | The user wants cinematic quality | The user wants throughput, not finish |
 | The user mentioned Seedance | The user mentioned HappyHorse |
 
@@ -15,7 +15,7 @@ Default to Seedance 2.0 when the brief is ambiguous and quality matters more tha
 
 ## Seedance 2.0 Constraints
 
-- **Durations** (`--seconds`): `4`, `5`, `8`, `10`. No other values.
+- **Durations** (`--seconds`): any integer from `4` to `15`.
 - **Resolutions** (`--resolution`): `480p`, `720p`.
 - **Aspect flag**: `--ratio`, one of `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9`.
 - **Image-to-video**: pass a public image URL or a data URI through `--input-reference`.
@@ -38,11 +38,12 @@ The Handoff Command in the output should be ready to paste. The `node scripts/..
 ### Seedance 2.0 — Text-to-Video
 
 ```bash
-cd "${CODEX_HOME:-$HOME/.codex}/skills/hiapi-seedance-2-0-video" \
+cd "${CODEX_HOME:-$HOME/.codex}/skills/hiapi-seedance-2-0-video-skill" \
+  || cd "${CODEX_HOME:-$HOME/.codex}/skills/hiapi-seedance-2-0-video" \
   || cd "$HOME/.claude/skills/hiapi-seedance-2-0-video"
 node scripts/hiapi-seedance-2-video.mjs \
   --prompt "<final-copy-ready-prompt>" \
-  --seconds <4|5|8|10> \
+  --seconds <4-15> \
   --resolution <480p|720p> \
   --ratio <16:9|9:16|1:1|4:3|3:4|21:9>
 ```
@@ -50,12 +51,13 @@ node scripts/hiapi-seedance-2-video.mjs \
 ### Seedance 2.0 — Image-to-Video
 
 ```bash
-cd "${CODEX_HOME:-$HOME/.codex}/skills/hiapi-seedance-2-0-video" \
+cd "${CODEX_HOME:-$HOME/.codex}/skills/hiapi-seedance-2-0-video-skill" \
+  || cd "${CODEX_HOME:-$HOME/.codex}/skills/hiapi-seedance-2-0-video" \
   || cd "$HOME/.claude/skills/hiapi-seedance-2-0-video"
 node scripts/hiapi-seedance-2-video.mjs \
   --prompt "<final-copy-ready-prompt>" \
   --input-reference "<https-or-data-uri>" \
-  --seconds <4|5|8|10> \
+  --seconds <4-15> \
   --resolution <480p|720p> \
   --ratio <16:9|9:16|1:1|4:3|3:4|21:9>
 ```
