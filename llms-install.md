@@ -52,7 +52,7 @@ When the agent invokes this skill:
 4. Read `references/hiapi-handoff.md` to pick the target HiAPI skill and fill the handoff command.
 5. Return the 13 sections defined in `SKILL.md`'s Output Contract, in order, in the user's language.
 6. Constrain parameters to the chosen target model:
-   - **Seedance 2.0**: `--seconds` ∈ {`4`,`5`,`8`,`10`}, `--resolution` ∈ {`480p`,`720p`}, `--ratio` ∈ {`16:9`,`9:16`,`1:1`,`4:3`,`3:4`,`21:9`}. Supports image-to-video via `--input-reference`.
+   - **Seedance 2.0**: `--seconds` is any integer from `4` to `15`, `--resolution` ∈ {`480p`,`720p`}, `--ratio` ∈ {`16:9`,`9:16`,`1:1`,`4:3`,`3:4`,`21:9`}. Supports image-to-video via `--input-reference`.
    - **HappyHorse 1.0**: `--seconds` ∈ {`3`,`5`,`8`,`10`,`15`}, `--resolution` ∈ {`720p`,`1080p`} (no `480p`), `--size` ∈ {`16:9`,`9:16`,`1:1`,`4:3`,`3:4`} (no `21:9`). Text-to-video only.
 7. If the user requests an unsupported value, return the closest supported value and note the change.
 8. Tag only **staging choices** (camera, layout, lighting, generic visual treatment) as `[creative assumption]`. Never tag an invented fact, metric, or UI label that way.

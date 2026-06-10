@@ -2,7 +2,7 @@
 
 These are the patterns this skill picks from. Match the pattern to the brief, then adapt to one of the **target model's** supported durations:
 
-- Seedance 2.0: `4`, `5`, `8`, `10` seconds.
+- Seedance 2.0: any integer from `4` to `15` seconds.
 - HappyHorse 1.0: `3`, `5`, `8`, `10`, `15` seconds.
 
 Every pattern follows three rules:

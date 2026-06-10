@@ -31,7 +31,7 @@ Skip this skill and route directly to the model skill when the user already has 
 
 - **Duration**: `5` seconds. Never default to `30` — HiAPI's video models do not run that length.
 - **Aspect**: `16:9` for horizontal demos and explainers, `9:16` for social shorts and vertical product teasers.
-- **Scene count**: at micro-cut granularity (Seedance 2.0) — 4 blocks at `5` s, 5 at `8` s, 6 at `10` s. At macro-beat granularity (HappyHorse 1.0) — 2 beats at `3` s, 3 beats at `5` s, 4 beats at `8` s, 5 beats at `10` s, 6 beats at `15` s. Either way the Output Contract still returns one block per scene.
+- **Scene count**: at micro-cut granularity (Seedance 2.0) — 4 blocks at `5` s, 5 at `8` s, 6 at `10` s, and up to 8 blocks at `15` s. At macro-beat granularity (HappyHorse 1.0) — 2 beats at `3` s, 3 beats at `5` s, 4 beats at `8` s, 5 beats at `10` s, 6 beats at `15` s. Either way the Output Contract still returns one block per scene.
 - **Resolution**: Seedance 2.0 defaults to `720p`, downgrades to `480p` for fast drafts. HappyHorse 1.0 defaults to `1080p`, downgrades to `720p` when speed or cost matters; do not output `480p` for HappyHorse.
 - **Language**: Match the user's language. Keep product names, commands, and UI labels in their original casing.
 
@@ -39,7 +39,7 @@ The supported parameter sets are **model-specific**. This skill must pick a targ
 
 ### Seedance 2.0 (`hiapi-seedance-2-0-video`)
 
-- **Durations** (seconds): `4`, `5`, `8`, `10`.
+- **Durations** (seconds): any integer from `4` to `15`.
 - **Resolutions**: `480p`, `720p`.
 - **Ratios** (flag `--ratio`): `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9`.
 - **Input**: text-to-video, or image-to-video via `--input-reference`.
@@ -63,7 +63,7 @@ The supported parameter sets are **model-specific**. This skill must pick a targ
 4. **Extract visualizable facts.** See `references/source-extraction.md`. Pull names, commands, UI labels, numbers, differentiators, visual hooks, and what the product should never claim.
 5. **Pick a pattern.** See `references/prompt-patterns.md`. Adapt the pattern to the chosen duration and aspect ratio.
 6. **Write the prompt** following the Output Contract below. Each fact, command, and UI label must show up either on screen, in narration, or in a labeled visual cue.
-7. **Verify the constraints.** Confirm the duration is in the chosen target's allowed list (Seedance: `4`/`5`/`8`/`10`; HappyHorse: `3`/`5`/`8`/`10`/`15`). Confirm the aspect value matches the right flag for that target (`--ratio` for Seedance, `--size` for HappyHorse) and is in its allowed list. Confirm screen text is short enough to render. Confirm nothing in the prompt fabricates a feature.
+7. **Verify the constraints.** Confirm the duration is in the chosen target's allowed list (Seedance: any integer from `4` to `15`; HappyHorse: `3`/`5`/`8`/`10`/`15`). Confirm the aspect value matches the right flag for that target (`--ratio` for Seedance, `--size` for HappyHorse) and is in its allowed list. Confirm screen text is short enough to render. Confirm nothing in the prompt fabricates a feature.
 8. **Hand off.** See `references/hiapi-handoff.md`. Show the user the exact `node scripts/...` command for the chosen HiAPI skill so they can run it next.
 
 ## Output Contract
@@ -72,7 +72,7 @@ Return all of the following sections, in this order, in the user's language. Kee
 
 1. **Video Type** — one of: product demo, teaching short, social short, explainer, pitch, historical, visual concept.
 2. **Target Model** — `hiapi-seedance-2-0-video` or `hiapi-happyhorse-1-0-video`, with one reason.
-3. **Duration And Aspect** — pick from the chosen target's allowed list above. Seedance: `4|5|8|10` seconds and one of `16:9|9:16|1:1|4:3|3:4|21:9`. HappyHorse: `3|5|8|10|15` seconds and one of `16:9|9:16|1:1|4:3|3:4`. State which flag the target uses (`--ratio` for Seedance, `--size` for HappyHorse).
+3. **Duration And Aspect** — pick from the chosen target's allowed list above. Seedance: any integer from `4` to `15` seconds and one of `16:9|9:16|1:1|4:3|3:4|21:9`. HappyHorse: `3|5|8|10|15` seconds and one of `16:9|9:16|1:1|4:3|3:4`. State which flag the target uses (`--ratio` for Seedance, `--size` for HappyHorse).
 4. **Core Objective** — one sentence: what the viewer should remember at the end.
 5. **Source Extraction Summary** — five to ten bullet facts, each tagged `[source]` if pulled from a real source, or `[creative assumption]` if invented for staging. Never tag a guess as a source.
 6. **Narrative Through-Line** — one sentence: the story arc from frame one to the last frame.

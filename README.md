@@ -26,7 +26,7 @@ This skill produces prompts. It does not call a video API by itself. The output 
 
 | Target | When to use |
 | --- | --- |
-| [hiapi-seedance-2-0-video-skill](https://github.com/HiAPIAI/hiapi-seedance-2-0-video-skill) | Text-to-video and image-to-video, cinematic quality, 4–10 seconds |
+| [hiapi-seedance-2-0-video-skill](https://github.com/HiAPIAI/hiapi-seedance-2-0-video-skill) | Text-to-video and image-to-video, cinematic quality, 4–15 seconds |
 | [hiapi-happyhorse-1-0-video-skill](https://github.com/HiAPIAI/hiapi-happyhorse-1-0-video-skill) | Fast text-to-video drafts |
 
 A directed prompt specifies what appears, what moves, what is typed, what is heard, and what the model must not show. Every key fact in the source appears on screen, in narration, or as a labeled visual cue.
@@ -108,7 +108,7 @@ Every skill run returns these sections, in order:
 
 1. **Video Type** — product demo, teaching short, social short, explainer, pitch, historical, or visual concept.
 2. **Target Model** — `hiapi-seedance-2-0-video` or `hiapi-happyhorse-1-0-video`, with one reason.
-3. **Duration And Aspect** — picked from the chosen target's allowed list. Seedance: `4|5|8|10` s + `--ratio` ∈ `16:9|9:16|1:1|4:3|3:4|21:9`. HappyHorse: `3|5|8|10|15` s + `--size` ∈ `16:9|9:16|1:1|4:3|3:4`. The output names the right flag.
+3. **Duration And Aspect** — picked from the chosen target's allowed list. Seedance: any integer from `4` to `15` seconds + `--ratio` ∈ `16:9|9:16|1:1|4:3|3:4|21:9`. HappyHorse: `3|5|8|10|15` s + `--size` ∈ `16:9|9:16|1:1|4:3|3:4`. The output names the right flag.
 4. **Core Objective** — single sentence the viewer should remember.
 5. **Source Extraction Summary** — 5–10 bullets. Real facts are tagged `[source]`; only staging choices (camera, layout, lighting, transition copy) may be tagged `[creative assumption]`. Guesses are never tagged as sources.
 6. **Narrative Through-Line** — one-sentence arc.
@@ -133,14 +133,14 @@ See [`SKILL.md`](SKILL.md) for the full agent contract and [`references/`](refer
 
 | Model | Durations (`--seconds`) | Resolutions | Aspect flag |
 | --- | --- | --- | --- |
-| Seedance 2.0 | `4`, `5`, `8`, `10` | `480p`, `720p` | `--ratio` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9` |
+| Seedance 2.0 | any integer from `4` to `15` | `480p`, `720p` | `--ratio` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9` |
 | HappyHorse 1.0 | `3`, `5`, `8`, `10`, `15` | `720p`, `1080p` | `--size` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4` |
 
 If the user asks for an unsupported duration or ratio, this skill offers the closest supported value and notes the change in the output.
 
 ### Why 5s Instead Of The Upstream 30s Default
 
-This skill is inspired by the upstream `video-prompt-director`, which defaults to 30-second prompts for HyperFrames-style generators. HiAPI's video models output single clips of up to 10–15 seconds. Defaulting to `5` keeps the prompt **directly runnable** against Seedance 2.0 or HappyHorse 1.0 without the user having to remember to compress the plan. Longer pieces are still supported — `8` and `10` for Seedance, `15` for HappyHorse.
+This skill is inspired by the upstream `video-prompt-director`, which defaults to 30-second prompts for HyperFrames-style generators. HiAPI's video models output single clips up to 15 seconds. Defaulting to `5` keeps the prompt **directly runnable** against Seedance 2.0 or HappyHorse 1.0 without the user having to remember to compress the plan. Longer pieces are still supported up to `15` seconds where the target model allows it.
 
 ---
 
@@ -172,7 +172,7 @@ This skill is inspired by the upstream `video-prompt-director`, which defaults t
 | --- | --- |
 | Does this skill call the HiAPI API directly? | No. It produces prompts. Pair it with a HiAPI video skill to render. |
 | Do I need `HIAPI_API_KEY` to use this skill? | No. This skill runs offline. The key is only needed for the target render skill. |
-| Why does it default to 5 seconds and not 30? | HiAPI's video models do not support 30-second outputs. Seedance is 4/5/8/10; HappyHorse is 3/5/8/10/15. |
+| Why does it default to 5 seconds and not 30? | HiAPI's video models do not support 30-second outputs. Seedance supports integer durations from 4 to 15 seconds; HappyHorse supports 3/5/8/10/15. |
 | Can it pick the target model for me? | Yes. If you do not name one, it defaults to Seedance 2.0 for image-to-video and cinematic work, HappyHorse 1.0 for fast text-only drafts. |
 | What if my brief lacks facts? | This skill only labels **staging choices** (camera, layout, lighting) as `[creative assumption]`. Missing facts become a question for you, not an invented claim. |
 | What if I provide a URL? | This skill extracts facts from the source first, then writes the prompt. See `references/source-extraction.md`. |

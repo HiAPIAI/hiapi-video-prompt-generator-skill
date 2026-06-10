@@ -26,7 +26,7 @@ Languages: [English](README.md) | [简体中文](README.zh-CN.md)
 
 | 目标 skill | 适合什么 |
 | --- | --- |
-| [hiapi-seedance-2-0-video-skill](https://github.com/HiAPIAI/hiapi-seedance-2-0-video-skill) | 文生视频、图生视频，电影感，4–10 秒 |
+| [hiapi-seedance-2-0-video-skill](https://github.com/HiAPIAI/hiapi-seedance-2-0-video-skill) | 文生视频、图生视频，电影感，4–15 秒 |
 | [hiapi-happyhorse-1-0-video-skill](https://github.com/HiAPIAI/hiapi-happyhorse-1-0-video-skill) | 快速文生视频草稿 |
 
 "有调度的提示词"会把每一条关键事实、每一行屏幕文字、每一个动作和镜头运动写清楚，并显式列出**模型不应该生成的内容**。
@@ -108,7 +108,7 @@ cp -R hiapi-video-prompt-generator "$AGENT_SKILLS_DIR/hiapi-video-prompt-generat
 
 1. **视频类型** — 产品演示、知识短片、社交短片、解说、Pitch、历史/市场、视觉概念。
 2. **目标模型** — `hiapi-seedance-2-0-video` 或 `hiapi-happyhorse-1-0-video`，附一句原因。
-3. **时长与画幅** — 根据所选目标的合法集合：Seedance 是 `4|5|8|10` 秒 + `--ratio` ∈ `16:9|9:16|1:1|4:3|3:4|21:9`；HappyHorse 是 `3|5|8|10|15` 秒 + `--size` ∈ `16:9|9:16|1:1|4:3|3:4`。在这一段里写清楚用哪个 flag。
+3. **时长与画幅** — 根据所选目标的合法集合：Seedance 是 `4` 到 `15` 秒之间的任意整数 + `--ratio` ∈ `16:9|9:16|1:1|4:3|3:4|21:9`；HappyHorse 是 `3|5|8|10|15` 秒 + `--size` ∈ `16:9|9:16|1:1|4:3|3:4`。在这一段里写清楚用哪个 flag。
 4. **核心目标** — 一句话：观众看完应该记得什么。
 5. **资料提取摘要** — 5–10 条要点：来自来源的事实点标 `[source]`，仅"创意化的镜头/布光/转场"等舞台化选择可标 `[creative assumption]`；不要把猜测当作来源。
 6. **叙事主线** — 一句话故事弧。
@@ -133,14 +133,14 @@ cp -R hiapi-video-prompt-generator "$AGENT_SKILLS_DIR/hiapi-video-prompt-generat
 
 | 模型 | 时长 (`--seconds`) | 清晰度 | 画幅 flag |
 | --- | --- | --- | --- |
-| Seedance 2.0 | `4`, `5`, `8`, `10` | `480p`, `720p` | `--ratio` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9` |
+| Seedance 2.0 | `4` 到 `15` 秒之间的任意整数 | `480p`, `720p` | `--ratio` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9` |
 | HappyHorse 1.0 | `3`, `5`, `8`, `10`, `15` | `720p`, `1080p` | `--size` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4` |
 
 如果用户提了不支持的时长或画幅，生成器会给出最接近的合法值，并在输出里注明改动。
 
 ### 为什么默认 5 秒（而不是上游的 30 秒）
 
-参考项目 `video-prompt-director` 默认 30 秒，是为了配合 HyperFrames 那种多镜头脚本。HiAPI 的视频模型最长单段 10–15 秒，默认 5 秒可以让生成器的产出**直接喂进** Seedance 2.0 或 HappyHorse 1.0 的 `--seconds`，省去用户压缩脚本的步骤。需要更长时只要换 `8`、`10`（Seedance）或 `15`（HappyHorse）。
+参考项目 `video-prompt-director` 默认 30 秒，是为了配合 HyperFrames 那种多镜头脚本。HiAPI 的视频模型最长单段到 15 秒，默认 5 秒可以让生成器的产出**直接喂进** Seedance 2.0 或 HappyHorse 1.0 的 `--seconds`，省去用户压缩脚本的步骤。需要更长时，在目标模型允许范围内最高可到 `15` 秒。
 
 ---
 
@@ -172,7 +172,7 @@ cp -R hiapi-video-prompt-generator "$AGENT_SKILLS_DIR/hiapi-video-prompt-generat
 | --- | --- |
 | 这个 skill 会直接调 HiAPI 视频接口吗？ | 不会。它产出提示词，配合 HiAPI 的视频 skill 出片。 |
 | 用这个 skill 需要 `HIAPI_API_KEY` 吗？ | 不需要。Key 只在最后那一步、调用渲染 skill 时才用得到。 |
-| 为什么默认 5 秒而不是 30 秒？ | HiAPI 的视频模型不出 30 秒。Seedance 是 4/5/8/10；HappyHorse 是 3/5/8/10/15。 |
+| 为什么默认 5 秒而不是 30 秒？ | HiAPI 的视频模型不出 30 秒。Seedance 支持 4 到 15 秒之间的整数；HappyHorse 是 3/5/8/10/15。 |
 | 它会自动选目标模型吗？ | 会。没指定时，图生视频和电影感画面默认走 Seedance 2.0；纯文生视频快草稿走 HappyHorse 1.0。 |
 | 简报里事实不够怎么办？ | 生成器只会把"镜头/布光/转场"这类**舞台化选择**标成 `[creative assumption]`。缺失的产品事实是直接抛回来问你，而不是编一个。 |
 | 我给了 URL 会怎么处理？ | 先按 `references/source-extraction.md` 提取事实，再写提示词。 |
