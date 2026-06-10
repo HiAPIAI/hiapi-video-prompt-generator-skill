@@ -3,7 +3,7 @@
 These are the patterns this skill picks from. Match the pattern to the brief, then adapt to one of the **target model's** supported durations:
 
 - Seedance 2.0: any integer from `4` to `15` seconds.
-- HappyHorse 1.0: `3`, `5`, `8`, `10`, `15` seconds.
+- HappyHorse 1.0: any integer from `3` to `15` seconds.
 
 Every pattern follows three rules:
 
@@ -11,7 +11,7 @@ Every pattern follows three rules:
 2. **Every key fact** shows up as on-screen text, a labeled UI element, or narration.
 3. **The product name, topic, or final takeaway** appears on screen near the end — usually in the last beat. Do not force a brand stamp on historical, research, or pure visual-concept videos.
 
-## Product Demo (5s default, also works at 8s and 10s)
+## Product Demo (5s default, extendable within the target model's duration range)
 
 For tools, APIs, CLIs, apps, SaaS features.
 
