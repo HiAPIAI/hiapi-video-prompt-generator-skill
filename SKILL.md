@@ -7,6 +7,14 @@ metadata:
 
 # HiAPI Video Prompt Generator
 
+Before using this skill, run the update check once per session (it skips silently when offline; set `HIAPI_SKIP_UPDATE_CHECK=1` to disable):
+
+```bash
+node scripts/check-update.mjs
+```
+
+If it reports a required update, run the printed install command before continuing. If it reports an available update, tell the user and continue.
+
 Use this skill when the user has a video idea, a product link, a research topic, or a brief, and needs a **strong, executable video prompt** before calling a video model.
 
 This skill does not generate video. It produces a structured prompt that the user can paste into:
