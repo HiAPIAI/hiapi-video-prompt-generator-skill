@@ -4,7 +4,7 @@
 // below minimumVersion -> exit 1 with the update command; below latestVersion -> stderr notice.
 
 export const SKILL_ID = "hiapi-video-prompt-generator";
-export const SKILL_VERSION = "0.1.3";
+export const SKILL_VERSION = "0.1.4";
 export const DEFAULT_SKILLS_MANIFEST_URL = "https://raw.githubusercontent.com/HiAPIAI/hiapi-skills/main/skills.json";
 const DEFAULT_UPDATE_COMMAND = "npx -y github:HiAPIAI/hiapi-video-prompt-generator-skill -y";
 

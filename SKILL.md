@@ -40,7 +40,7 @@ Skip this skill and route directly to the model skill when the user already has 
 - **Duration**: `5` seconds. Never default to `30` — HiAPI's video models do not run that length.
 - **Aspect**: `16:9` for horizontal demos and explainers, `9:16` for social shorts and vertical product teasers.
 - **Scene count**: at micro-cut granularity (Seedance 2.0) — 4 blocks at `5` s, 5 at `8` s, 6 at `10` s, and up to 8 blocks at `15` s. At macro-beat granularity (HappyHorse 1.0) — 2 beats at `3` s, 3 beats at `5` s, 4 beats at `8` s, 5 beats at `10` s, 6 beats at `15` s. Either way the Output Contract still returns one block per scene.
-- **Resolution**: Seedance 2.0 defaults to `720p`, downgrades to `480p` for fast drafts. HappyHorse 1.0 defaults to `1080p`, downgrades to `720p` when speed or cost matters; do not output `480p` for HappyHorse.
+- **Resolution**: Seedance 2.0 defaults to `720p`, downgrades to `480p` for fast drafts, and goes up to `1080p` or `4k` only when the user explicitly asks for delivery quality (`4k` is premium-priced — confirm cost first). HappyHorse 1.0 defaults to `1080p`, downgrades to `720p` when speed or cost matters; do not output `480p` for HappyHorse.
 - **Language**: Match the user's language. Keep product names, commands, and UI labels in their original casing.
 
 The supported parameter sets are **model-specific**. This skill must pick a target first, then constrain duration and aspect to that target's list.
@@ -48,7 +48,7 @@ The supported parameter sets are **model-specific**. This skill must pick a targ
 ### Seedance 2.0 (`hiapi-seedance-2-0-video`)
 
 - **Durations** (seconds): any integer from `4` to `15`.
-- **Resolutions**: `480p`, `720p`, `1080p`.
+- **Resolutions**: `480p`, `720p`, `1080p`, `4k`.
 - **Ratios** (flag `--ratio`): `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9`, `adaptive`.
 - **Media modes**: text-to-video; first-frame image-to-video; first+last-frame image-to-video; multimodal references.
 - **Mutual exclusion**: do not mix first/last-frame fields with `reference_image_urls`, `reference_video_urls`, or `reference_audio_urls`.
