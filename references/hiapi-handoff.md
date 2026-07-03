@@ -16,14 +16,14 @@ Default to Seedance 2.0 when the brief is ambiguous and quality matters more tha
 ## Seedance 2.0 Constraints
 
 - **Durations** (`--seconds`): any integer from `4` to `15`.
-- **Resolutions** (`--resolution`): `480p`, `720p`, `1080p`.
+- **Resolutions** (`--resolution`): `480p`, `720p`, `1080p`, `4k`. `4k` is premium-priced — only hand off `4k` when the user explicitly asked for it.
 - **Aspect flag**: `--ratio`, one of `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9`, `adaptive`.
 - **Media modes**: text-to-video, first-frame image-to-video, first+last-frame image-to-video, or multimodal references.
 - **Mutual exclusion**: do not mix first/last-frame fields with `--reference-image-url`, `--reference-video-url`, or `--reference-audio-url`.
 - **Reference limits**: reference images plus first/last-frame images must be at most 9 images total; reference video URLs at most 3 clips, each 2-15 s and total <=15 s; reference audio URLs at most 3 clips, each 2-15 s and total <=15 s.
 - **Image-to-video**: pass the start image through `--first-frame-url`. The old `--input-reference` alias still works, but prefer `--first-frame-url` in new handoffs.
 
-Reject the brief or adjust the defaults if the user asks for `30` seconds, `4K`, or a ratio outside the list.
+Reject the brief or adjust the defaults if the user asks for `30` seconds or a ratio outside the list.
 
 ## HappyHorse 1.0 Constraints
 
@@ -48,7 +48,7 @@ cd "${CODEX_HOME:-$HOME/.codex}/skills/hiapi-seedance-2-0-video-skill" \
 node scripts/hiapi-seedance-2-video.mjs \
   --prompt "<final-copy-ready-prompt>" \
   --seconds <4-15> \
-  --resolution <480p|720p|1080p> \
+  --resolution <480p|720p|1080p|4k> \
   --ratio <16:9|9:16|1:1|4:3|3:4|21:9|adaptive>
 ```
 
@@ -62,7 +62,7 @@ node scripts/hiapi-seedance-2-video.mjs \
   --prompt "<final-copy-ready-prompt>" \
   --first-frame-url "<https-url-data-uri-or-asset-id>" \
   --seconds <4-15> \
-  --resolution <480p|720p|1080p> \
+  --resolution <480p|720p|1080p|4k> \
   --ratio <16:9|9:16|1:1|4:3|3:4|21:9|adaptive>
 ```
 
@@ -77,7 +77,7 @@ node scripts/hiapi-seedance-2-video.mjs \
   --first-frame-url "<https-url-data-uri-or-asset-id>" \
   --last-frame-url "<https-url-data-uri-or-asset-id>" \
   --seconds <4-15> \
-  --resolution <480p|720p|1080p> \
+  --resolution <480p|720p|1080p|4k> \
   --ratio <16:9|9:16|1:1|4:3|3:4|21:9|adaptive>
 ```
 
@@ -95,7 +95,7 @@ node scripts/hiapi-seedance-2-video.mjs \
   --reference-audio-url "<https-url-data-uri-or-asset-id>" \
   --reference-audio-duration <2-15> \
   --seconds <4-15> \
-  --resolution <480p|720p|1080p> \
+  --resolution <480p|720p|1080p|4k> \
   --ratio <16:9|9:16|1:1|4:3|3:4|21:9|adaptive>
 ```
 
@@ -118,7 +118,7 @@ Refer to the target skill's own SKILL.md for any additional flags it supports.
 | Conflict | Resolution |
 | --- | --- |
 | User wants `30` seconds | Offer `15` seconds for either Seedance 2.0 or HappyHorse 1.0 and a shorter scene plan. Note the change in the output. |
-| User wants `4K` | Offer the target's max (`1080p` for Seedance or HappyHorse) and explain the limit. |
+| User wants `4K` | Seedance 2.0 supports `4k` natively — use it, but note it is premium-priced. On HappyHorse offer its max `1080p` and explain the limit, or switch the target to Seedance 2.0. |
 | User wants a square ratio for cinematic work | Offer `1:1`, but also offer `16:9` as an alternative. |
 | User wants `21:9` on HappyHorse | Either switch the target to Seedance 2.0 or downgrade to `16:9`. Do not emit `21:9` for HappyHorse. |
 | User wants image-to-video with HappyHorse | Switch to Seedance 2.0. Note the switch. |

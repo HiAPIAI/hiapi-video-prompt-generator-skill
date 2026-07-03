@@ -133,7 +133,7 @@ See [`SKILL.md`](SKILL.md) for the full agent contract and [`references/`](refer
 
 | Model | Durations (`--seconds`) | Resolutions | Aspect flag |
 | --- | --- | --- | --- |
-| Seedance 2.0 | any integer from `4` to `15` | `480p`, `720p`, `1080p` | `--ratio` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9`, `adaptive` |
+| Seedance 2.0 | any integer from `4` to `15` | `480p`, `720p`, `1080p`, `4k` | `--ratio` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4`, `21:9`, `adaptive` |
 | HappyHorse 1.0 | any integer from `3` to `15` | `720p`, `1080p` | `--size` ∈ `16:9`, `9:16`, `1:1`, `4:3`, `3:4` |
 
 If the user asks for an unsupported duration or ratio, this skill offers the closest supported value and notes the change in the output.
