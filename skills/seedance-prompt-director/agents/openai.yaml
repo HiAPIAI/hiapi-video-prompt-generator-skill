@@ -1,0 +1,4 @@
+interface:
+  display_name: "HiAPI Seedance Prompt Director"
+  short_description: "Production-ready Seedance prompts and storyboards"
+  default_prompt: "Use $hiapi-seedance-prompt-director to turn my video idea and reference assets into a validated Seedance 2.0 production prompt."
