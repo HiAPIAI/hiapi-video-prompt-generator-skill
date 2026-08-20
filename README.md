@@ -1,5 +1,9 @@
 # Video Prompt Generator Skill
 
+This repository is the canonical home for HiAPI video-prompt planning skills.
+It includes the original source-grounded generator plus two specialized routes:
+Seedance production planning and emotional close-up performance prompting.
+
 Turn briefs and sources into controlled, source-grounded video prompts that run on HiAPI Seedance 2.0 or HappyHorse 1.0.
 
 **Video Prompt Generator • HiAPI Handoff • [HiAPI](https://www.hiapi.ai)**
@@ -38,6 +42,19 @@ A directed prompt specifies what appears, what moves, what is typed, what is hea
 Use this skill when the brief is too short, the source has not been read closely, or the user has produced a vague prompt and expects a generic video back. If the user already has a final, scene-by-scene prompt, skip this skill and call the target video skill directly.
 
 For a library of proven Seedance 2.0 prompts to anchor on, see [awesome-seedance-2-0-prompts](https://github.com/HiAPIAI/awesome-seedance-2-0-prompts).
+
+## Included specialist routes
+
+| Route | Entry point | Use it for |
+| --- | --- | --- |
+| General prompt direction | `SKILL.md` | Briefs, product links, research topics, and short-form video prompts |
+| Seedance Prompt Director | [`skills/seedance-prompt-director/SKILL.md`](skills/seedance-prompt-director/SKILL.md) | Asset maps, second-by-second storyboards, references, dialogue, and feasibility checks |
+| Emotion Close-up | [`skills/emotion-closeup/SKILL.md`](skills/emotion-closeup/SKILL.md) | Anatomically grounded micro-expression and restrained emotional performance prompts |
+
+The former `hiapi-seedance-prompt-director-skill` and `hiapi-emotion-closeup`
+repositories remain as archived history pages. Existing installation URLs are
+kept as redirects; new work should use this repository and the specialist
+folder names above.
 
 ---
 
