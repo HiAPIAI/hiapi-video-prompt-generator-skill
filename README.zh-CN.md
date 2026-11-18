@@ -2,15 +2,15 @@
 
 把简短的视频创意、链接或调研主题，转成结构化、有来源支撑、可直接喂给 HiAPI Seedance 2.0 或 HappyHorse 1.0 的视频提示词。
 
-**视频提示词生成器 • HiAPI 交付 • [HiAPI](https://www.hiapi.ai/zh)**
+**视频提示词生成器 • HiAPI 交付 • [HiAPI](https://www.hiapi.ai/zh?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator)**
 
 > 这个 skill 自身不需要 API Key。只有最终出片所用的渲染 skill（[Seedance 2.0](https://github.com/HiAPIAI/hiapi-seedance-2-0-video-skill) 或 [HappyHorse 1.0](https://github.com/HiAPIAI/hiapi-happyhorse-1-0-video-skill)）才需要 `HIAPI_API_KEY`。
 
-[HiAPI 文档](https://docs.hiapi.ai) · [全部 HiAPI Skills](https://github.com/HiAPIAI/hiapi-skills) · [Remote MCP](https://docs.hiapi.ai/zh/for-ai/) · [查看价格](https://www.hiapi.ai/zh/pricing) · [免费获取 API Key](https://www.hiapi.ai/zh/register)
+[HiAPI 文档](https://docs.hiapi.ai?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) · [全部 HiAPI Skills](https://github.com/HiAPIAI/hiapi-skills) · [Remote MCP](https://docs.hiapi.ai/zh/for-ai/?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) · [查看价格](https://www.hiapi.ai/zh/pricing?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) · [免费获取 API Key](https://www.hiapi.ai/zh/register?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator)
 
 Languages: [English](README.md) | [简体中文](README.zh-CN.md)
 
-> **HiAPI Matrix:** 🎨 [图片提示词库](https://github.com/HiAPIAI/awesome-gpt-image-2-prompts) · 🎬 [视频提示词库](https://github.com/HiAPIAI/awesome-seedance-2-0-prompts) · 🛠️ **Agent Skills（当前）** · 🤖 [Remote MCP](https://docs.hiapi.ai/zh/for-ai/) · 📖 [API 文档](https://docs.hiapi.ai)
+> **HiAPI Matrix:** 🎨 [图片提示词库](https://github.com/HiAPIAI/awesome-gpt-image-2-prompts) · 🎬 [视频提示词库](https://github.com/HiAPIAI/awesome-seedance-2-0-prompts) · 🛠️ **Agent Skills（当前）** · 🤖 [Remote MCP](https://docs.hiapi.ai/zh/for-ai/?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) · 📖 [API 文档](https://docs.hiapi.ai?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator)
 
 ---
 
@@ -197,4 +197,4 @@ MIT
 
 ---
 
-[HiAPI](https://www.hiapi.ai/zh) — 一个 API，所有 AI 模型
+[HiAPI](https://www.hiapi.ai/zh?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) — 一个 API，所有 AI 模型
