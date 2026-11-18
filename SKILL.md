@@ -131,6 +131,6 @@ $hiapi-video-prompt-generator Plan an 8-second image-to-video starting from outp
 
 - HiAPI Seedance 2.0 video skill: https://github.com/HiAPIAI/hiapi-seedance-2-0-video-skill
 - HiAPI HappyHorse 1.0 video skill: https://github.com/HiAPIAI/hiapi-happyhorse-1-0-video-skill
-- Get API key: https://www.hiapi.ai/en/register?utm_source=skill&utm_medium=agent&utm_campaign=hiapi-video-prompt-generator
-- Pricing: https://www.hiapi.ai/en/pricing?utm_source=skill&utm_medium=agent&utm_campaign=hiapi-video-prompt-generator
-- HiAPI docs: https://docs.hiapi.ai?utm_source=skill&utm_medium=agent&utm_campaign=hiapi-video-prompt-generator
+- Get API key: https://www.hiapi.ai/en/register
+- Pricing: https://www.hiapi.ai/en/pricing
+- HiAPI docs: https://docs.hiapi.ai
