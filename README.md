@@ -6,15 +6,15 @@ Seedance production planning and emotional close-up performance prompting.
 
 Turn briefs and sources into controlled, source-grounded video prompts that run on HiAPI Seedance 2.0 or HappyHorse 1.0.
 
-**Video Prompt Generator • HiAPI Handoff • [HiAPI](https://www.hiapi.ai)**
+**Video Prompt Generator • HiAPI Handoff • [HiAPI](https://www.hiapi.ai/en?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator)**
 
 > This skill itself does not need an API key. `HIAPI_API_KEY` is only required for the target render skill ([Seedance 2.0](https://github.com/HiAPIAI/hiapi-seedance-2-0-video-skill) or [HappyHorse 1.0](https://github.com/HiAPIAI/hiapi-happyhorse-1-0-video-skill)).
 
-[HiAPI Docs](https://docs.hiapi.ai) · [All HiAPI Skills](https://github.com/HiAPIAI/hiapi-skills) · [Remote MCP](https://docs.hiapi.ai/for-ai/) · [Pricing](https://www.hiapi.ai/en/pricing) · [Get API Key](https://www.hiapi.ai/en/register)
+[HiAPI Docs](https://docs.hiapi.ai?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) · [All HiAPI Skills](https://github.com/HiAPIAI/hiapi-skills) · [Remote MCP](https://docs.hiapi.ai/for-ai/?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) · [Pricing](https://www.hiapi.ai/en/pricing?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) · [Get API Key](https://www.hiapi.ai/en/register?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator)
 
 Languages: [English](README.md) | [简体中文](README.zh-CN.md)
 
-> **HiAPI Matrix:** 🎨 [Image Prompts](https://github.com/HiAPIAI/awesome-gpt-image-2-prompts) · 🎬 [Video Prompts](https://github.com/HiAPIAI/awesome-seedance-2-0-prompts) · 🛠️ **Agent Skills (you are here)** · 🤖 [Remote MCP](https://docs.hiapi.ai/for-ai/) · 📖 [API Docs](https://docs.hiapi.ai)
+> **HiAPI Matrix:** 🎨 [Image Prompts](https://github.com/HiAPIAI/awesome-gpt-image-2-prompts) · 🎬 [Video Prompts](https://github.com/HiAPIAI/awesome-seedance-2-0-prompts) · 🛠️ **Agent Skills (you are here)** · 🤖 [Remote MCP](https://docs.hiapi.ai/for-ai/?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) · 📖 [API Docs](https://docs.hiapi.ai?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator)
 
 ---
 
@@ -214,4 +214,4 @@ MIT
 
 ---
 
-[HiAPI](https://www.hiapi.ai) — One API, all AI models
+[HiAPI](https://www.hiapi.ai/en?utm_source=github&utm_medium=readme&utm_campaign=hiapi-video-prompt-generator) — One API, all AI models
